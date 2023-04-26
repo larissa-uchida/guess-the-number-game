@@ -3,7 +3,7 @@ import random
 
 root = Tk()
 root.title('Guess the Number')
-root.iconbitmap('icon.ico')
+root.iconbitmap('assets/icon.ico')
 width_screen = root.winfo_screenwidth()
 height_screen = root.winfo_screenheight()
 pos_x = int(width_screen/2 - 250)
@@ -25,14 +25,13 @@ def hard_game():
     attempts = 5
 
 main_page = Frame(root)
+main_page.pack()
 
 title_game = Label(main_page, text='Game \nGuess the Number', font='Arial 25 bold').grid(column=1, row=1, padx=110, pady=40)
 
 easy_button = Button(main_page, text='Easy Mode', font='Arial 15', bg='#71c776', width=20, command=lambda: [easy_game(), start_game()]).grid(column=1, row=2)
 medium_button = Button(main_page, text='Medium Mode', font='Arial 15', bg='#f5f190', width=20, command=lambda: [medium_game(), start_game()]).grid(column=1, row=3, pady=20)
 hard_button = Button(main_page, text='Hard Mode', font='Arial 15', bg='#c78171', width=20, command=lambda: [hard_game(), start_game()]).grid(column=1, row=4)
-
-main_page.pack()
 
 second_page = Frame(root)
 third_page = Frame(root)
