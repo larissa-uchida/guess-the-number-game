@@ -57,13 +57,12 @@ def start_game():
     global guess, pseudo_guess, turn, attempt, secret_number
     secret_number = random.randrange(101)
     main_page.pack_forget()
-    third_page.pack_forget()
     second_page.pack()
-    turn = -1
+    turn = 0
     guess = 0
     attempt = 1
 
-    attempt_text = Label(second_page, text='')
+    attempt_text = Label(second_page, text=f'Round: 0 \nRemain attempts: {attempts}', font='Arial 15').grid(column=1, row=5, pady=20)
     guess_text = Label(second_page, text='Enter your guess:', font='Arial 20').grid(column=1, row=1, pady=40)
         
     pseudo_guess = Entry(second_page, width=30)
@@ -72,19 +71,23 @@ def start_game():
     guess_button = Button(second_page, text='Enter', font='Arial 15 bold', command=myClick, width=10)
     guess_button.grid(column=1, row=3, pady=20)
 
+def play_again():
+    third_page.pack_forget()
+    main_page.pack()
+
 def win_game():
     second_page.pack_forget()
     third_page.pack()
     win_text = Label(third_page, text='Nice guess, \nYou won!', font='Arial 30 bold').grid(column=1, row=1, pady=50)
-    play_again = Button(third_page, text='Play Again', font='Arial 15', width=15, command=start_game)
-    play_again.grid(column=1, row=2)
+    play_again_button = Button(third_page, text='Play Again', font='Arial 15', width=15, command=play_again)
+    play_again_button.grid(column=1, row=2)
 
 def lost_game():
     second_page.pack_forget()
     third_page.pack()
     lost_text = Label(third_page, text='Close... \nbut you lost :(', font='Arial 20 bold').grid(column=1, row=1, pady=50)
-    play_again = Button(third_page, text='Play Again', font='Arial 15', width=15, command=start_game)
-    play_again.grid(column=1, row=2)
+    play_again_button = Button(third_page, text='Play Again', font='Arial 15', width=15, command=play_again)
+    play_again_button.grid(column=1, row=2)
 
 root.mainloop()
 
