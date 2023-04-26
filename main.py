@@ -3,6 +3,7 @@ import random
 
 root = Tk()
 root.title('Guess the Number')
+root.iconbitmap('icon.ico')
 width_screen = root.winfo_screenwidth()
 height_screen = root.winfo_screenheight()
 pos_x = int(width_screen/2 - 250)
@@ -27,9 +28,9 @@ main_page = Frame(root)
 
 title_game = Label(main_page, text='Game \nGuess the Number', font='Arial 25 bold').grid(column=1, row=1, padx=110, pady=40)
 
-easy_button = Button(main_page, text='Easy Mode', font='Arial 15', bg='green', width=20, command=lambda: [easy_game(), start_game()]).grid(column=1, row=2)
-medium_button = Button(main_page, text='Medium Mode', font='Arial 15', bg='yellow', width=20, command=lambda: [medium_game(), start_game()]).grid(column=1, row=3, pady=20)
-hard_button = Button(main_page, text='Hard Mode', font='Arial 15', bg='red', width=20, command=lambda: [hard_game(), start_game()]).grid(column=1, row=4)
+easy_button = Button(main_page, text='Easy Mode', font='Arial 15', bg='#71c776', width=20, command=lambda: [easy_game(), start_game()]).grid(column=1, row=2)
+medium_button = Button(main_page, text='Medium Mode', font='Arial 15', bg='#f5f190', width=20, command=lambda: [medium_game(), start_game()]).grid(column=1, row=3, pady=20)
+hard_button = Button(main_page, text='Hard Mode', font='Arial 15', bg='#c78171', width=20, command=lambda: [hard_game(), start_game()]).grid(column=1, row=4)
 
 main_page.pack()
 
@@ -68,7 +69,7 @@ def start_game():
     pseudo_guess = Entry(second_page, width=30)
     pseudo_guess.grid(column=1, row=2)
 
-    guess_button = Button(second_page, text='Enter', font='Arial 15 bold', command=myClick, width=10)
+    guess_button = Button(second_page, text='Enter', font='Arial 15 bold', command=myClick, width=10, bg='#cfd1d1')
     guess_button.grid(column=1, row=3, pady=20)
 
 def play_again():
@@ -79,14 +80,14 @@ def win_game():
     second_page.pack_forget()
     third_page.pack()
     win_text = Label(third_page, text='Nice guess, \nYou won!', font='Arial 30 bold').grid(column=1, row=1, pady=50)
-    play_again_button = Button(third_page, text='Play Again', font='Arial 15', width=15, command=play_again)
+    play_again_button = Button(third_page, text='Play Again', font='Arial 15', width=15, bg='#e3e3e3', command=play_again)
     play_again_button.grid(column=1, row=2)
 
 def lost_game():
     second_page.pack_forget()
     third_page.pack()
     lost_text = Label(third_page, text='Close... \nbut you lost :(', font='Arial 20 bold').grid(column=1, row=1, pady=50)
-    play_again_button = Button(third_page, text='Play Again', font='Arial 15', width=15, command=play_again)
+    play_again_button = Button(third_page, text='Play Again', font='Arial 15', width=15, bg='#e3e3e3', command=play_again)
     play_again_button.grid(column=1, row=2)
 
 root.mainloop()
