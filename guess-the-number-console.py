@@ -1,46 +1,46 @@
 import random
 
-def jogo():
-    novamente = 'sim'
-    pontuacao = 0
-    while novamente in 'sim, Sim, SIM, s, ss':
-        nivel = int(input('-------------------------------------------------- \n              Níveis de Dificuldade: \n-------------------------------------------------- \n                  (1) - Fácil \n                  (2) - Médio \n                  (3) - Difícil \n-------------------------------------------------- \n     Digite o Número de acordo com o Nível: '))
+def game():
+    play_again = 'yes'
+    score = 0
+    while play_again in 'yes, Yes, YES':
+        level = int(input('-------------------------------------------------- \n                    Levels: \n-------------------------------------------------- \n                  (1) - Easy \n                  (2) - Medium \n                  (3) - Hard \n-------------------------------------------------- \n     Enter the number according to the level: '))
         print('--------------------------------------------------')
-        while nivel != 1 and nivel != 2 and nivel != 3:
-            nivel = int(input('-------------------------------------------------- \n       Valor Inválido. Digite Novamente: '))
-        if nivel == 1:
-            tentativas = 20
-        elif nivel == 2:
-            tentativas = 10
+        while level != 1 and level != 2 and level != 3:
+            level = int(input('-------------------------------------------------- \n       Invalid. Enter again: '))
+        if level == 1:
+            attempts = 20
+        elif level == 2:
+            attempts = 10
         else:
-            tentativas = 5
-        numero_secreto = int(random.randrange(101))
-        chute = 101
-        rodada = 0
-        tentativa = 1
-        while tentativa != 0:
-            chute = int(input('     Digite o seu Palpite: '))
-            rodada += 1
-            tentativa = tentativas - rodada
-            if chute == numero_secreto:
+            attempts = 5
+        secret_number = int(random.randrange(101))
+        guess = 101
+        turn = 0
+        attempt = 1
+        while attempt != 0:
+            guess = int(input('     Enter your guess: '))
+            turn += 1
+            attempt = attempts - turn
+            if guess == secret_number:
                 break
-            if chute > numero_secreto:
-                print(f'-------------------------------------------------- \n Você está na rodada {rodada}. Possui mais {tentativa} tentativas. \n \n          O número deve ser Menor... \n--------------------------------------------------')
-            elif chute < numero_secreto:
-                print(f'-------------------------------------------------- \n Você está na rodada {rodada}. Possui mais {tentativa} tentativas. \n \n          O número deve ser Maior... \n--------------------------------------------------')
-        if chute == numero_secreto:
-            pontuacao += 1
-            print(f'     Você Ganhou, Parabéns!     Pontuação Atual: {pontuacao} \n--------------------------------------------------')
-        if tentativa == 0:
-            #pontuacao -= 1
-            if pontuacao > 1:
-                pontuacao -= 1
-            print(f'     Você perdeu :(     Pontuação Atual: {pontuacao} \n--------------------------------------------------')
-            print(f'            O número secreto era {numero_secreto}')
-        novamente = input('Deseja Jogar Novamente (Sim ou Não)? ')
-        while novamente not in 'sim, Sim, SIM, s, ss, Não, não, nao, Nao, n':
-            novamente = input('-------------------------------------------------- \n               Resposta Inválida. \nDeseja Jogar Novamente (Sim ou Não)? ')
-    print('-------------------------------------------------- \n               Te vejo na Próxima! \n--------------------------------------------------')
-jogo()
+            if guess > secret_number:
+                print(f'-------------------------------------------------- \n You are in turn {turn}. You have more {attempt} attempts. \n \n          The number should be smaller... \n--------------------------------------------------')
+            elif guess < secret_number:
+                print(f'-------------------------------------------------- \n You are in turn {turn}. You have more {attempt} attempts. \n \n          The number should be bigger... \n--------------------------------------------------')
+        if guess == secret_number:
+            score += 1
+            print(f'     You won, Congratulations!     Current Score: {score} \n--------------------------------------------------')
+        if attempt == 0:
+            #score -= 1
+            if score > 1:
+                score -= 1
+            print(f'     You lost :(     Current Score: {score} \n--------------------------------------------------')
+            print(f'            The secret number was {secret_number}.')
+        play_again = input('Try again? (yes or no)? ')
+        while play_again not in 'yes, Yes, YES, no, No, NO':
+            play_again = input('-------------------------------------------------- \n               Invalid. \nTry again? (yes or no)? ')
+    print('-------------------------------------------------- \n               See you next time! \n--------------------------------------------------')
+game()
 
 
